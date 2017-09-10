@@ -18,9 +18,35 @@ namespace Aduana_app.Web_Services
     {
 
         [WebMethod]
-        public string HelloWorld()
+        public string calcular_Impuesto_Sat(string marcar, string linea, string modelo)
         {
-            return "Hello World";
+            //consultar impusto
+            string impuesto = getJson("valor", 400);
+            return "{"+impuesto+"}";
+        }
+
+
+
+
+        /// <summary>
+        /// Formatea expesiona json string:string
+        /// </summary>
+        /// <param name="atributo"></param>
+        /// <param name="valor"></param>
+        /// <returns></returns>
+        public string getJson(string atributo, string valor)
+        {
+            return string.Format("\"{0}\": \"{1}\"", atributo, valor);
+        }
+        /// <summary>
+        /// Formatea expresiones a json string:int
+        /// </summary>
+        /// <param name="atributo"></param>
+        /// <param name="valor"></param>
+        /// <returns></returns>
+        public string getJson(string atributo, int valor)
+        {
+            return string.Format("\"{0}\": {1}", atributo, valor);
         }
     }
 }
